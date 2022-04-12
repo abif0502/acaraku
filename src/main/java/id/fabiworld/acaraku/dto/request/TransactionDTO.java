@@ -16,6 +16,7 @@ public class TransactionDTO {
     private Long styleId;
     private String title;
     private String description;
+    private String subUrl;
     private String address;
     private String coordinate;
     private Long bgmId;

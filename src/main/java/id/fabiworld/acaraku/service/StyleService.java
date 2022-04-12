@@ -47,11 +47,13 @@ public class StyleService {
     }
 
     public Style create(StyleDTO styleDto){
+        LocalDateTime dateNow = LocalDateTime.now();
         var data = Style.builder()
                 .name(styleDto.getName())
                 .price(styleDto.getPrice())
                 .discount(styleDto.getDiscount())
-                .createdDate(LocalDateTime.now())
+                .createdDate(dateNow)
+                .modifiedDate(dateNow)
                 .status(GeneralStatus.ACTIVE)
                 .build();
         return styleRepository.save(data);

@@ -12,6 +12,9 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
     @Query("SELECT t FROM Transaction t WHERE t.status='ACTIVE'")
     List<Transaction> findAllActive();
 
-    @Query("SELECT t FROM Transaction t WHERE t.client=?1")
-    List<Transaction> findByClient(Client client);
+    @Query("SELECT t FROM Transaction t WHERE t.client.id=?1")
+    List<Transaction> findByClient(Long clientId);
+
+    @Query("SELECT t FROM Transaction t WHERE t.client.id=?1 AND t.status='ACTIVE'")
+    List<Transaction> findByClientActive(Long clientId);
 }
